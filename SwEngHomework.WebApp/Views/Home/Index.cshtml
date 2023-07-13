@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h3 class="display-4">Hello and Welcome!</h3>
+    <p>Welcome to the WebApp portion of the homework assignment.  For directions, please consult the README.md</p>
+    <hr />
+
+    <div id="dateDiv">
+        <h4 id="dateTimeElement"> <i></i> </h4>
+    </div>
+
+    <div id="linkDiv" style="display:none;">
+        <a href="@Url.Action("EvenMinute", "Other")" target="_blank">Even Minute</a>
+    </div>
+
+    <hr />
+    <div>
+        Thank you for very much for taking the time to complete this part of the homework assignment!
+    </div>
+</div>
+
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        try 
+        {
+            // Get the Hyperlink element
+            var linkDiv = document.getElementById("linkDiv");
+
+            // Get the DateTime element
+            var dateTimeElement = document.getElementById("dateTimeElement");
+
+            // Update the current date and time
+            var currentDate = new Date();
+            dateTimeElement.textContent = toIsoString(currentDate);
+
+            // Get the minute value
+            var minute = currentDate.getMinutes();
+
+            // Check if the minute is even
+            if (minute % 2 === 0) {
+                // Show up the link to Other/EvenMinute
+                linkDiv.style.display = "block";
+            }
+        }
+        catch (error) {
+            console.error("An error occurred while processing DateTime: ", error);
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
